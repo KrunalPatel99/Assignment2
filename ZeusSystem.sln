@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.539
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeusSystem", "ZeusSystem\ZeusSystem.csproj", "{0A42C7D1-4108-4C5B-BB21-2653150BC655}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeusSystem.Tests", "ZeusSystem.Tests\ZeusSystem.Tests.csproj", "{9A91750B-EF77-412D-ACF2-F600F809248C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A42C7D1-4108-4C5B-BB21-2653150BC655}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A42C7D1-4108-4C5B-BB21-2653150BC655}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A42C7D1-4108-4C5B-BB21-2653150BC655}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A42C7D1-4108-4C5B-BB21-2653150BC655}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A91750B-EF77-412D-ACF2-F600F809248C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A91750B-EF77-412D-ACF2-F600F809248C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A91750B-EF77-412D-ACF2-F600F809248C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A91750B-EF77-412D-ACF2-F600F809248C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {17BFB8D2-1EBC-46EA-8F43-5E13D793942F}
+	EndGlobalSection
+EndGlobal

@@ -19,7 +19,7 @@ namespace ZeusSystem.Controllers
         // GET: EmplyeeInfoes
         public ActionResult Index()
         {
-            return View(db.EmplyeeInfoes.ToList());
+            return View("Index",db.EmplyeeInfoes.ToList());
         }
 
         // GET: EmplyeeInfoes/Details/5

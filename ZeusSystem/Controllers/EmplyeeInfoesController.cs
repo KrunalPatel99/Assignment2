@@ -13,13 +13,22 @@ namespace ZeusSystem.Controllers
     [Authorize]
     public class EmplyeeInfoesController : Controller
     {
-        private ZeusDB db = new ZeusDB();
+        IMockEmployees db;
+        //private ZeusDB db = new ZeusDB();
+        public EmplyeeInfoesController()
+        {
+            this.db = new IDataEmployees();
+        }
 
+        public EmplyeeInfoesController(IMockEmployees mockDb)
+        {
+            this.db = mockDb;
+        }
         [AllowAnonymous]
         // GET: EmplyeeInfoes
         public ActionResult Index()
         {
-            return View("Index",db.EmplyeeInfoes.ToList());
+            return View("Index", db.EmplyeeInfos.ToList());
         }
 
         // GET: EmplyeeInfoes/Details/5
@@ -29,7 +38,8 @@ namespace ZeusSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EmplyeeInfo emplyeeInfo = db.EmplyeeInfoes.Find(id);
+            //EmplyeeInfo emplyeeInfo = db.EmplyeeInfos.Find(id);
+            EmplyeeInfo emplyeeInfo = db.EmplyeeInfos.SingleOrDefault(e => e.EmployeeID == id);
             if (emplyeeInfo == null)
             {
                 return HttpNotFound();
@@ -52,8 +62,9 @@ namespace ZeusSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.EmplyeeInfoes.Add(emplyeeInfo);
-                db.SaveChanges();
+                //db.EmplyeeInfos.Add(emplyeeInfo);
+                //db.SaveChanges();
+                db.Save(emplyeeInfo);
                 return RedirectToAction("Index");
             }
 
@@ -67,7 +78,8 @@ namespace ZeusSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EmplyeeInfo emplyeeInfo = db.EmplyeeInfoes.Find(id);
+            //EmplyeeInfo emplyeeInfo = db.EmplyeeInfos.Find(id);
+            EmplyeeInfo emplyeeInfo = db.EmplyeeInfos.SingleOrDefault(e => e.EmployeeID == id);
             if (emplyeeInfo == null)
             {
                 return HttpNotFound();
@@ -84,8 +96,10 @@ namespace ZeusSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(emplyeeInfo).State = EntityState.Modified;
-                db.SaveChanges();
+                //db.Entry(emplyeeInfo).State = EntityState.Modified;
+                //db.SaveChanges();
+                db.Save(emplyeeInfo);
+
                 return RedirectToAction("Index");
             }
             return View(emplyeeInfo);
@@ -98,7 +112,8 @@ namespace ZeusSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EmplyeeInfo emplyeeInfo = db.EmplyeeInfoes.Find(id);
+            //EmplyeeInfo emplyeeInfo = db.EmplyeeInfos.Find(id);
+            EmplyeeInfo emplyeeInfo = db.EmplyeeInfos.SingleOrDefault(e => e.EmployeeID == id);
             if (emplyeeInfo == null)
             {
                 return HttpNotFound();
@@ -111,9 +126,11 @@ namespace ZeusSystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            EmplyeeInfo emplyeeInfo = db.EmplyeeInfoes.Find(id);
-            db.EmplyeeInfoes.Remove(emplyeeInfo);
-            db.SaveChanges();
+            //EmplyeeInfo emplyeeInfo = db.EmplyeeInfos.Find(id);
+            EmplyeeInfo emplyeeInfo = db.EmplyeeInfos.SingleOrDefault(e => e.EmployeeID == id);
+            //db.EmplyeeInfos.Remove(emplyeeInfo);
+            //db.SaveChanges();
+            db.Delete(emplyeeInfo);
             return RedirectToAction("Index");
         }
 

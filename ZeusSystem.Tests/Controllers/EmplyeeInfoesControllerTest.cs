@@ -11,19 +11,33 @@ using System.Collections.Generic;
 
 namespace ZeusSystem.Tests.Controllers
 {
-    
     [TestClass]
     public class EmplyeeInfoesControllerTest
     {
         //moq data
         EmplyeeInfoesController controller;
-        List<EmplyeeInfo> Employees;
+        List<EmplyeeInfo> emplyeeInfos;
+        Mock<IMockEmployees> mock;
+
+        [TestInitialize]
+        public void TestIntialize()
+        {
+            emplyeeInfos = new List<EmplyeeInfo>
+            {
+                new EmplyeeInfo { EmployeeID = 1, EmployeeName = "Test", EmployeeAddress = "Test", EmployeePhoneNumber = "98989898", EmployeeEmailID = "test@test.com", EmployeeDoB = Convert.ToDateTime("11/09/1999") },
+                new EmplyeeInfo { EmployeeID = 1, EmployeeName = "Test", EmployeeAddress = "Test", EmployeePhoneNumber = "98989898", EmployeeEmailID = "test@test.com", EmployeeDoB = Convert.ToDateTime("11/09/1999") },
+                new EmplyeeInfo { EmployeeID = 1, EmployeeName = "Test", EmployeeAddress = "Test", EmployeePhoneNumber = "98989898", EmployeeEmailID = "test@test.com", EmployeeDoB = Convert.ToDateTime("11/09/1999") }
+            };
+            mock = new Mock<IMockEmployees>();
+            mock.Setup(e => e.EmplyeeInfos).Returns(emplyeeInfos.AsQueryable());
+            controller = new EmplyeeInfoesController(mock.Object);
+        }
+
 
         [TestMethod]
         public void IndexViewLoads()
         {
-            //arrange
-            EmplyeeInfoesController controller = new EmplyeeInfoesController();
+            
 
             //act
             ViewResult result = controller.Index() as ViewResult;
@@ -31,5 +45,6 @@ namespace ZeusSystem.Tests.Controllers
             //assert
             Assert.AreEqual("Index", result.ViewName);
         }
+
     }
 }

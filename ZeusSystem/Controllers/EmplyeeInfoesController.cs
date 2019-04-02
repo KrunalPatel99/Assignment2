@@ -28,7 +28,7 @@ namespace ZeusSystem.Controllers
         // GET: EmplyeeInfoes
         public ActionResult Index()
         {
-            return View("Index", db.EmplyeeInfos.ToList());
+            return View("Index", db.EmplyeeInfos.OrderBy(e => e.EmployeeName).ToList());
         }
 
         // GET: EmplyeeInfoes/Details/5
@@ -44,13 +44,13 @@ namespace ZeusSystem.Controllers
             {
                 return HttpNotFound();
             }
-            return View(emplyeeInfo);
+            return View("Details",emplyeeInfo);
         }
 
         // GET: EmplyeeInfoes/Create
         public ActionResult Create()
         {
-            return View();
+            return View("Create");
         }
 
         // POST: EmplyeeInfoes/Create
@@ -68,7 +68,7 @@ namespace ZeusSystem.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(emplyeeInfo);
+            return View("Create",emplyeeInfo);
         }
 
         // GET: EmplyeeInfoes/Edit/5
@@ -84,7 +84,7 @@ namespace ZeusSystem.Controllers
             {
                 return HttpNotFound();
             }
-            return View(emplyeeInfo);
+            return View("Edit",emplyeeInfo);
         }
 
         // POST: EmplyeeInfoes/Edit/5
@@ -102,7 +102,7 @@ namespace ZeusSystem.Controllers
 
                 return RedirectToAction("Index");
             }
-            return View(emplyeeInfo);
+            return View("Edit",emplyeeInfo);
         }
 
         // GET: EmplyeeInfoes/Delete/5
@@ -118,7 +118,7 @@ namespace ZeusSystem.Controllers
             {
                 return HttpNotFound();
             }
-            return View(emplyeeInfo);
+            return View("Delete",emplyeeInfo);
         }
 
         // POST: EmplyeeInfoes/Delete/5
